@@ -1,0 +1,351 @@
+﻿@model Admitere3.Models.ClientData;
+@{
+    ViewData["Title"] = "Formular";
+}
+
+<!--
+
+    1. Nu uita sa pui * acolo unde campurile sunt obligatorii !!!
+    2. Combo box la sector cu sector 1-6 si "-"
+    3. *** De intrebat : ce facem daca se schimba de la an la an beneficiari, specializari etc...
+    
+    
+    4. Baza de date
+
+                    1. Tabela beneficiari
+                    2. Tabela programe de studii
+                    3. Tabela Programe_Beneficiari cu cheie primara dubla
+                    4. Tabela 
+
+
+-->
+
+
+<body>
+
+
+
+    <div class="sectiune_formular">
+        
+        @using (Html.BeginForm("Submit", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+        <form>
+            <br />
+            <label>Nume: </label>
+            @Html.EditorFor(model => model.nume)*
+            @Html.ValidationMessageFor(model => model.nume)
+            <br />
+            <br />
+            <label>Prenume tata: </label>
+            @Html.EditorFor(model => model.PrenumeTata)*
+            @Html.ValidationMessageFor(model => model.PrenumeTata)
+            <br />
+            <br />
+            <label>Prenume candidat: </label>
+            @Html.EditorFor(model => model.PrenumeCandidat)*
+            @Html.ValidationMessageFor(model => model.PrenumeCandidat)
+            <br />
+            <br />
+            <label>Cod candidat: </label>
+            @Html.EditorFor(model => model.CodCandidat)*
+            @Html.ValidationMessageFor(model => model.CodCandidat)
+            <br />
+            <br />
+            <label>Data nasterii: </label>
+            <br />
+            <label>Ziua: </label>
+            @Html.EditorFor(model => model.DataNasterii.zi)*
+            @Html.ValidationMessageFor(model => model.DataNasterii.zi)
+            <label>Luna: </label>
+            @Html.EditorFor(model => model.DataNasterii.luna)*
+            @Html.ValidationMessageFor(model => model.DataNasterii.luna)
+            <label>Anul: </label>
+            @Html.EditorFor(model => model.DataNasterii.an)*
+            @Html.ValidationMessageFor(model => model.DataNasterii.an)
+            <br />
+            <br />
+
+
+
+            <label>Domiciliul stabil: </label>
+            <br />
+            <label>Judet : </label>
+            @Html.EditorFor(model => model.DomiciliuStabil.judet)*
+            @Html.ValidationMessageFor(model => model.DomiciliuStabil.judet)
+            <label>Localitate : </label>
+            @Html.EditorFor(model => model.DomiciliuStabil.localitate)*
+            @Html.ValidationMessageFor(model => model.DomiciliuStabil.localitate)
+            <br />
+            <label>Sector : </label>
+            @Html.EditorFor(model => model.DomiciliuStabil.sector)
+            @Html.ValidationMessageFor(model => model.DomiciliuStabil.sector)
+            <label>Strada: </label>
+            @Html.EditorFor(model => model.DomiciliuStabil.strada)*
+            @Html.ValidationMessageFor(model => model.DomiciliuStabil.strada)
+            <label>Nr. : </label>
+            @Html.EditorFor(model => model.DomiciliuStabil.nr)*
+            @Html.ValidationMessageFor(model => model.DomiciliuStabil.nr)
+            <label>Bl. : </label>
+            @Html.EditorFor(model => model.DomiciliuStabil.bl)
+            @Html.ValidationMessageFor(model => model.DomiciliuStabil.bl)
+            <br />
+            <label>Sc. : </label>
+            @Html.EditorFor(model => model.DomiciliuStabil.sc)
+            @Html.ValidationMessageFor(model => model.DomiciliuStabil.sc)
+            <label>Et. : </label>
+            @Html.EditorFor(model => model.DomiciliuStabil.et)
+            @Html.ValidationMessageFor(model => model.DomiciliuStabil.et)
+            <label>Ap. : </label>
+            @Html.EditorFor(model => model.DomiciliuStabil.ap)
+            @Html.ValidationMessageFor(model => model.DomiciliuStabil.ap)
+            <label>Cod postal : </label>
+            @Html.EditorFor(model => model.DomiciliuStabil.codPostal)
+            @Html.ValidationMessageFor(model => model.DomiciliuStabil.codPostal)
+            <br />
+            <br />
+            <label>Telefon : </label>
+            @Html.EditorFor(model => model.DomiciliuStabil.telefon)*
+            @Html.ValidationMessageFor(model => model.DomiciliuStabil.telefon)
+            <br />
+            <br />
+
+
+
+            <label>Carte de identitate : </label>
+            <br />
+            <label>Seria: </label>
+            @Html.EditorFor(model => model.CarteDeIdentitate.seria)*
+            @Html.ValidationMessageFor(model => model.CarteDeIdentitate.seria)
+            <label>Nr. : </label>
+            @Html.EditorFor(model => model.CarteDeIdentitate.nr)*
+            @Html.ValidationMessageFor(model => model.CarteDeIdentitate.nr)
+            <label>CNP : </label>
+            @Html.EditorFor(model => model.CarteDeIdentitate.cnp)*
+            @Html.ValidationMessageFor(model => model.CarteDeIdentitate.cnp)
+            <br />
+            <label>Eliberat de Politia: </label>
+            @Html.EditorFor(model => model.CarteDeIdentitate.eliberatDe)
+            @Html.ValidationMessageFor(model => model.CarteDeIdentitate.eliberatDe)
+            <!--
+
+               Nu uita sa schimbi aici DataEliberarii  !!!!!
+    -->
+            <label>la data de : </label>
+            @Html.EditorFor(model => model.CarteDeIdentitate.DataEliberarii.zi)*
+            @Html.ValidationMessageFor(model => model.CarteDeIdentitate.DataEliberarii.zi)
+
+            <br />
+            <br />
+            <label>Media obtinuta la examenul de bacalaureat : </label>
+            @Html.EditorFor(model => model.MediaBacalaureat)*
+            @Html.ValidationMessageFor(model => model.MediaBacalaureat)
+            <br />
+            <br />
+            <br />
+            <label>Alege Beneficiarul : </label>
+            <select class="form-control" id="IdBeneficiar"
+                    asp-items="@(new SelectList(ViewBag.ListaDeBeneficiari, "IdBeneficiar", "Denumire"))">
+                <option value='0'>--Select--</option>
+            </select>
+            <br />
+            <br />
+
+
+            <h1>OPŢIUNI (ordinea programelor de studii):</h1>
+
+
+            <p>Pentru candidaţii aparţinând Ministerului Apărării Naţionale</p>
+
+            <!--
+                Aici trebuie sa punem in functie de ce optiune de beneficiar am selectat
+            -->
+
+            <br />
+            <br />
+
+
+            <table>
+                <tr>
+                    <th>Numar optiune</th>
+                    <th>Programul de studii</th>
+                </tr>
+                @for (int i = 0; i < Model.lista_optiuni.Count(); i++)
+                {
+                    <tr>
+                        <td>@Html.DropDownListFor(model => model.int_numere_optiuni, Model.string_numere_optiuni)</td>
+                        <td> @Model.lista_optiuni[@i] </td>
+                    </tr>
+                }
+
+            </table>
+
+
+            <p>Notă: 
+                <br />
+                Nr.* - se consemnează opţiunea cu numere de la 1 la 12, în ordinea dorită de candidat.
+            </p>
+
+
+            <br />
+            <br />
+            <label>Email: </label>
+            @Html.EditorFor(model => model.email)
+            @Html.ValidationMessageFor(model => model.email)
+            <br />
+            <br />
+            <label>Confirma Email: </label>
+            @Html.EditorFor(model => model.confirmEmail)
+            @Html.ValidationMessageFor(model => model.confirmEmail)
+            <br />
+            <br />
+            <label>Diploma bacalaureat: </label>
+            <br />
+            <div>
+                @Html.TextBoxFor(model => model.diplomaBac, new { type = "file" }) <br />
+                @ViewBag.Message
+            </div>
+            <br />
+            <br />
+            <label>Dovada plata taxa inscriere: </label>
+            <br />
+            <div>
+                @Html.TextBoxFor(model => model.dovadaTaxaInscriere, new { type = "file" }) <br />
+                @ViewBag.Message
+            </div>
+            <br />
+            <br />
+
+            <h1>DECLARAŢII, ANGAJAMENTE:</h1>
+
+            <p>Declar pe propria răspundere că:</p>
+
+            <p>
+                <input type="checkbox">
+                că nu am urmat, nu urmez şi nu am absolvit cu diplomă, studii universitare de licenţă în cadrul unei instituţii
+                de învăţământ superior, pe locuri finanţate de la buget.
+            </p>
+
+            <p>
+                <input type="checkbox">
+                că am urmat/ urmez / am absolvit cu diplomă* studii universitare de licenţă pe locuri finanţate de la buget.
+                în cadrul următoarei instituţii de învăţământ superior** _____________________________, şi mă oblig, în
+                conformitate cu OUG nr. 49/2014, ca până la data înmatriculării să fac dovada că am efectuat sau efectuez
+                în tranşe contravaloarea serviciilor de şcolarizare către instituţia de învăţământ superior unde am fost
+                înmatriculat/ sunt înmatriculat / am absolvit studiile.
+            </p>
+
+            <p>
+                Notă : *se vor completa variantele corecte.
+                <br />
+                **se înscrie denumirea instituţiei de învăţământ superior(daca exista).
+            </p>
+
+            <p>
+                În cazul în care voi fi declarat „ADMIS” la Academia Tehnică Militară „Ferdinand I”, pe locurile
+                finanţate de la buget, în perioada 01-02.09.2021, până la ora 12.00 voi transmite on-line (pe adresa de
+                admitere admitere2021@mta.ro) cererea de înscriere în anul I și la prezentarea în academie voi depune la
+                termenul stabilit diploma de bacalaureat în original la secretariatul facultății, renunţând prin prezenta
+                declaraţie, după caz, la calitatea de student într-o altă instituţie civilă de învăţământ superior, întrucât am luat
+                la cunoştinţă de faptul că studenţii militari nu pot urma două facultăţi în acelaşi timp.
+                <br />
+                În cazul în care nu voi transmite cererea de înscriere în anul I în perioada 01-02.09.2021, până la
+                ora 12.00 sau nu voi depune diploma de bacalaureat în original în termenul stabilit la secretariatul
+                facultății, cunosc faptul că voi fi declarat „RETRAS”.
+                <br />
+                Am luat la cunoştinţă despre faptul că pot să mă înscriu și pe locurile cu taxă de studii (prin cerere
+                de înscriere pentru locurile cu taxă de studii şi la termenul stabilit prin graficul concursului de
+                admitere), iar în cazul în care nu voi fi „IERARHIZAT” pe locurile finanțate de la buget, voi fi clasificat
+                împreună cu candidații înscriși numai pe locurile cu taxă de studii în ordinea descrescătoare a mediei
+                examenului de bacalaureat pentru ocuparea locurilor cu taxă de studii.
+            </p>
+
+            <label>Data completării : </label>
+            @Html.EditorFor(model => model.DataCompletariiFormularului)*
+            @Html.ValidationMessageFor(model => model.DataCompletariiFormularului)
+            <br />
+            <br />
+            <br />
+
+            <button type="submit" class="submit-button">Submit</button>
+            <br />
+
+        </form>
+        }
+
+    </div>
+
+</body>
+
+
+
+<style>
+
+    .sectiune_formular {
+        background-color: whitesmoke;
+        height: 1760px;
+        margin-bottom: 300px;
+    }
+    .sectiune_formular h1 {
+        font-size: 20px;
+    }
+
+    button {
+        padding: 5px;
+        font: bold .6em sans-serif;
+        border: 2px solid #333;
+        border-radius: 5px;
+        background: none;
+        cursor: pointer;
+        height: 35px;
+        width: 65px;
+        transform: rotate(-1.5deg);
+    }
+
+    button:after {
+        content: "";
+    }
+
+    button:hover,
+    button:focus {
+        outline: none;
+        background: #000;
+        color: #FFF;
+    }
+
+
+    table
+    {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+     
+    td, th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+
+
+     tr:hover {
+        background-color: #ddd;
+    }
+
+
+
+     th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04AA6D;
+        color: white;
+    }
+
+</style>

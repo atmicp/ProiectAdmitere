@@ -1,0 +1,76 @@
+﻿@model Admitere3.Models.ClientData;
+@{
+    ViewData["Title"] = "MailResultView";
+}
+
+
+<body>
+    
+    <div class="sectiune_email">
+
+        @if (Model != null)
+        {
+            if (Model.MailSent == 1)
+            {
+                <p>Am trimis un email ce contine formularul dumneavoastra catre adresa: @Model.email</p>
+
+                <p>Daca inca nu ati primit formularul, puteti cere retrimiterea acestuia printr-un click,
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="MailResultView">aici.</a>
+                </p>
+
+                Model.MailSent = -1;
+
+            }
+            else if (Model.MailSent == 0)
+            {
+                <p>Nu s-a putut trimite formularul catre adresa de email: @Model.email</p>
+                <p>Va rugam sa verificati daca ati introdus corect adresa de email si sa incercati sa retrimiteti formularul.</p>
+                Model.MailSent = -1;
+            }
+        }
+
+    </div>
+
+</body>
+
+
+<style>
+
+    .sectiune_email {
+        background-color: whitesmoke;
+        height: 800px;
+        margin-bottom: 300px;
+    }
+
+    .sectiune_email h1 {
+        font-size: 20px;
+    }
+
+    .sectiune_email a {
+        color: skyblue;
+        text-align: center;
+        padding: 15px;
+        font-size: 17px;
+        font-weight: 600;
+        font-family: Arial;
+    }
+
+
+    .sectiune_email a:link {
+        text-decoration: none;
+    }
+
+    .sectiune_email a:visited {
+        text-decoration: none;
+    }
+
+    .sectiune_email a:hover {
+        text-decoration: underline;
+    }
+
+    .sectiune_email a:active {
+        text-decoration: underline;
+    }
+
+
+</style>

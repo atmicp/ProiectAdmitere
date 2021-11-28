@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Formular admitere </title>
+    <link rel="stylesheet" href="~/css/site.css" />
+
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <br />
+            <br />
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Acte necesare</a>
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Formular">Formular</a>
+        </header>
+
+    </div>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+
+    <footer>
+        <h1>&copy; @DateTime.Now.Year · Academia Tehnică Militară "Ferdinand I" </h1>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+
+
+<style>
+
+    header a {
+        color: skyblue;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 75px;
+        font-size: 30px;
+        font-weight: 600;
+        font-family: Arial;
+    }
+
+
+    header a:link {
+        text-decoration: none;
+    }
+
+    header a:visited {
+        text-decoration: none;
+    }
+
+    header a:hover {
+        text-decoration: underline;
+    }
+
+    header a:active {
+        text-decoration: underline;
+    }
+
+    .container {
+        width: 1000px;
+        margin: 0 auto;
+    }
+
+    .container header {
+        background-color: darkslategrey;
+        height: 105px;
+        margin-bottom: 100px;
+    }
+
+    footer {
+        width: 100%;
+        height: 40px;
+        background-color: darkslategrey;
+        padding: 60px 0px;
+    }
+
+    footer h1 {
+        text-align: center;
+        font-size: 25px;
+        font-family: Lato;
+        color: white;
+    }
+
+</style>
